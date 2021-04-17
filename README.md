@@ -4,6 +4,7 @@ Julia Version PaddlePaddle Quick Inference.
 # Install Package
 ```julia
 using Pkg
+
 Pkg.add(url="https://github.com/AgentMaker/PPQI.jl")
 ```
 
