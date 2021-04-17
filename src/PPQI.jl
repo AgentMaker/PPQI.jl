@@ -2,7 +2,7 @@ module PPQI
 
 using PyCall
 
-export load_config, load_model, forward
+export load_config, load_model, model_forward
 
 const inference = PyNULL()
 
@@ -85,7 +85,7 @@ function load_model(config)::InferenceModel
 end
 
 
-function forward(model::InferenceModel, input_datas::Any)::Any
+function model_forward(model::InferenceModel, input_datas::Any)::Any
     for input_handle in model.input_handles, data in input_datas
         input_handle.copy_from_cpu(data) 
     end
