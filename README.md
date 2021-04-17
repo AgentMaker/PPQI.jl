@@ -12,6 +12,7 @@ Julia Version PaddlePaddle Quick Inference.
     use_mkldnn::Bool=false, 
     cpu_treads::Int=1
   )::PyObject
+  
     return config::PyObject
   ```
 
@@ -21,6 +22,7 @@ Julia Version PaddlePaddle Quick Inference.
   function load_model(
     config
   )::InferenceModel
+  
     return model::InferenceModel
   ```
 
@@ -31,5 +33,6 @@ Julia Version PaddlePaddle Quick Inference.
     model::InferenceModel, 
     input_datas::Any
   )::Any
+  
     return output_datas::Any
   ```
