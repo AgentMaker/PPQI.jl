@@ -27,7 +27,7 @@ Pkg.add(url="https://github.com/AgentMaker/PPQI.jl")
 
   ```julia
   function load_model(
-    config
+    config::PyObject
   )::InferenceModel
   
     return model::InferenceModel
