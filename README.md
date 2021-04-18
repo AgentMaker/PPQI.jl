@@ -38,8 +38,8 @@ Pkg.add(url="https://github.com/AgentMaker/PPQI.jl")
   ```julia
   function model_forward(
     model::InferenceModel, 
-    input_datas::Any
+    input_datas::Vector
   )::Any
   
-    return output_datas::Any
+    return output_datas::Vector
   ```
