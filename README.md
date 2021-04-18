@@ -33,6 +33,16 @@ Pkg.add(url="https://github.com/AgentMaker/PPQI.jl")
     return model::InferenceModel
   ```
 
+* InferenceModel:
+
+  ```julia
+  struct InferenceModel
+      predictor::PyObject
+      input_handles::Vector{PyObject}
+      output_handles::Vector{PyObject}
+  end
+  ```
+
 * model_forward:
 
   ```julia
