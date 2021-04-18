@@ -1,3 +1,5 @@
+__precompile__(true)
+
 module PPQI
 
 using PyCall
@@ -12,9 +14,9 @@ end
 
 
 struct InferenceModel
-    predictor::Any
-    input_handles::Any
-    output_handles::Any
+    predictor::PyObject
+    input_handles::Vector{PyObject}
+    output_handles::Vector{PyObject}
 end
 
 
@@ -65,14 +67,14 @@ function load_model(config)::InferenceModel
     predictor = inference.create_predictor(config)
     input_names = predictor.get_input_names()
     output_names = predictor.get_output_names()
-    input_handles = []
+    input_handles = PyObject[]
 
     for input_name in input_names
         input_handle = predictor.get_input_handle(input_name)
         push!(input_handles, input_handle)
     end
 
-    output_handles = []
+    output_handles = PyObject[]
 
     for output_name in output_names
         output_handle = predictor.get_output_handle(output_name)
@@ -85,13 +87,13 @@ function load_model(config)::InferenceModel
 end
 
 
-function model_forward(model::InferenceModel, input_datas::Any)::Any
+function model_forward(model::InferenceModel, input_datas::Vector{Array})::Vector{PyObject}
     for input_handle in model.input_handles, data in input_datas
         input_handle.copy_from_cpu(data) 
     end
 
     model.predictor.run()
-    output_datas = []
+    output_datas = PyObject[]
 
     for output_handle in model.output_handles
         data = output_handle.copy_to_cpu() 
