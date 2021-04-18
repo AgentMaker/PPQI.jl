@@ -87,13 +87,13 @@ function load_model(config)::InferenceModel
 end
 
 
-function model_forward(model::InferenceModel, input_datas::Vector{Array})::Vector{PyObject}
+function model_forward(model::InferenceModel, input_datas::Vector{Array})::Vector{Array}
     for input_handle in model.input_handles, data in input_datas
         input_handle.copy_from_cpu(data) 
     end
 
     model.predictor.run()
-    output_datas = PyObject[]
+    output_datas = Array[]
 
     for output_handle in model.output_handles
         data = output_handle.copy_to_cpu() 
