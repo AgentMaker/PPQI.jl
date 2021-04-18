@@ -49,7 +49,7 @@ Pkg.add(url="https://github.com/AgentMaker/PPQI.jl")
   function model_forward(
     model::InferenceModel, 
     input_datas::Vector
-  )::Any
+  )::Vector
   
     return output_datas::Vector
   ```
