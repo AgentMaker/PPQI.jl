@@ -1,7 +1,7 @@
 name = "PPQI"
 uuid = "920956db-6d67-45dc-af6c-09bbf9adccfd"
 authors = ["jm12138"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
