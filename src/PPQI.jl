@@ -63,7 +63,7 @@ function load_config(modelpath::String, use_gpu::Bool=false, gpu_id::Int=0, use_
 end
 
 
-function load_model(config)::InferenceModel
+function load_model(config::PyObject)::InferenceModel
     predictor = inference.create_predictor(config)
     input_names = predictor.get_input_names()
     output_names = predictor.get_output_names()
